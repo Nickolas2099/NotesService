@@ -1,0 +1,11 @@
+FROM maven:3.9.6-eclipse-temurin-17-alpine AS builder
+WORKDIR /notes
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+COPY src ./src
+RUN mvn clean package
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /notes
+COPY --from=builder /notes/target/notes_service-*.jar notes.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "notes.jar"]

@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: task-1
+      author: Mikalai Antanenka
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            - or:
+                - tableExists:
+                    tableName: notes
+                - tableExists:
+                    tableName: tags
+      comment: task-1
+      changes:
+        - sqlFile:
+            path: DATA/create_table_notes.sql
+            relativeToChangelogFile: true
+            encoding: utf-8

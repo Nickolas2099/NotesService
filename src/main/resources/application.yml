@@ -1,0 +1,22 @@
+server:
+  address: 0.0.0.0
+
+spring:
+  application:
+    name: notes_service
+  datasource:
+    url: jdbc:h2:mem:notes;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+  liquibase:
+    change-log: classpath:/db/sql/master.yml
+    analytics-enabled: true
+    enabled: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        orm:
+          jdbc:
+            bind: info
+

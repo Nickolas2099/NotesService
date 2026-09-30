@@ -1,0 +1,13 @@
+name: notes_service
+
+services:
+  auth-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: notes_service
+    environment:
+      JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5080"
+    ports:
+      - "8080:8080"
+      - "5080:5080"
