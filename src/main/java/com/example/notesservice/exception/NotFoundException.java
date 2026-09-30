@@ -1,6 +1,5 @@
-package com.example.notes_service.exception.custom;
+package com.example.notesservice.exception;
 
-import com.example.notes_service.exception.ErrorCode;
 import org.springframework.lang.NonNull;
 
 public class NotFoundException extends BaseException {

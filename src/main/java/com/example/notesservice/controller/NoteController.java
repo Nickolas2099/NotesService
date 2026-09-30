@@ -1,11 +1,11 @@
-package com.example.notes_service.controller;
+package com.example.notesservice.controller;
 
-import com.example.notes_service.dto.NoteCreateRequestDto;
-import com.example.notes_service.dto.NoteCreateResponseDto;
-import com.example.notes_service.dto.NoteResponseDto;
-import com.example.notes_service.dto.NoteUpdateRequestDto;
-import com.example.notes_service.dto.NoteUpdateResponseDto;
-import com.example.notes_service.service.NoteService;
+import com.example.notesservice.dto.NoteCreateRequestDto;
+import com.example.notesservice.dto.NoteCreateResponseDto;
+import com.example.notesservice.dto.NoteResponseDto;
+import com.example.notesservice.dto.NoteUpdateRequestDto;
+import com.example.notesservice.dto.NoteUpdateResponseDto;
+import com.example.notesservice.service.NoteService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -59,5 +59,4 @@ public class NoteController {
         noteService.delete(noteId);
         return ResponseEntity.ok().build();
     }
-
 }

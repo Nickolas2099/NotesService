@@ -1,4 +1,4 @@
-package com.example.notes_service.dto;
+package com.example.notesservice.dto;
 
 public record NoteUpdateRequestDto(
         String title,

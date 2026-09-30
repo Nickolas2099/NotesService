@@ -1,4 +1,4 @@
-package com.example.notes_service.exception;
+package com.example.notesservice.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

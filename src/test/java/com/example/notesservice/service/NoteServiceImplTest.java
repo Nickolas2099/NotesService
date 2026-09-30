@@ -1,12 +1,11 @@
-package com.example.notes_service.service;
+package com.example.notesservice.service;
 
-import com.example.notes_service.mapper.NoteBaseMapper;
-import com.example.notes_service.dto.NoteCreateRequestDto;
-import com.example.notes_service.dto.NoteCreateResponseDto;
-import com.example.notes_service.dto.NoteResponseDto;
-import com.example.notes_service.exception.custom.AlreadyExistsException;
-import com.example.notes_service.model.Note;
-import com.example.notes_service.repository.NoteRepository;
+import com.example.notesservice.mapper.NoteBaseMapper;
+import com.example.notesservice.dto.NoteCreateRequestDto;
+import com.example.notesservice.dto.NoteCreateResponseDto;
+import com.example.notesservice.dto.NoteResponseDto;
+import com.example.notesservice.model.Note;
+import com.example.notesservice.repository.NoteRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

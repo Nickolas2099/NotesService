@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>notes_service</artifactId>
+    <artifactId>notes-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>notes_service</name>
-    <description>notes_service</description>
+    <name>notes-service</name>
+    <description>notes-service</description>
 
     <properties>
         <java.version>17</java.version>

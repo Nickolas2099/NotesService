@@ -1,10 +1,10 @@
-package com.example.notes_service.mapper;
+package com.example.notesservice.mapper;
 
-import com.example.notes_service.dto.NoteCreateRequestDto;
-import com.example.notes_service.dto.NoteCreateResponseDto;
-import com.example.notes_service.dto.NoteResponseDto;
-import com.example.notes_service.dto.NoteUpdateResponseDto;
-import com.example.notes_service.model.Note;
+import com.example.notesservice.dto.NoteCreateRequestDto;
+import com.example.notesservice.dto.NoteCreateResponseDto;
+import com.example.notesservice.dto.NoteResponseDto;
+import com.example.notesservice.dto.NoteUpdateResponseDto;
+import com.example.notesservice.model.Note;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

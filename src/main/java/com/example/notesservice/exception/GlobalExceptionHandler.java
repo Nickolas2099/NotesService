@@ -1,6 +1,4 @@
-package com.example.notes_service.exception;
-
-import com.example.notes_service.exception.custom.BaseException;
+package com.example.notesservice.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;

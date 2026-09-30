@@ -1,4 +1,4 @@
-package com.example.notes_service.model;
+package com.example.notesservice.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

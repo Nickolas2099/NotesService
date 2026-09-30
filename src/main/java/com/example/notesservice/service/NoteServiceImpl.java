@@ -1,22 +1,19 @@
-package com.example.notes_service.service;
+package com.example.notesservice.service;
 
-import com.example.notes_service.dto.NoteCreateRequestDto;
-import com.example.notes_service.dto.NoteCreateResponseDto;
-import com.example.notes_service.dto.NoteResponseDto;
-import com.example.notes_service.dto.NoteUpdateRequestDto;
-import com.example.notes_service.dto.NoteUpdateResponseDto;
-import com.example.notes_service.exception.custom.AlreadyExistsException;
-import com.example.notes_service.exception.ErrorCode;
-import com.example.notes_service.exception.custom.NotFoundException;
-import com.example.notes_service.mapper.NoteBaseMapper;
-import com.example.notes_service.model.Note;
-import com.example.notes_service.repository.NoteRepository;
+import com.example.notesservice.dto.NoteCreateRequestDto;
+import com.example.notesservice.dto.NoteCreateResponseDto;
+import com.example.notesservice.dto.NoteResponseDto;
+import com.example.notesservice.dto.NoteUpdateRequestDto;
+import com.example.notesservice.dto.NoteUpdateResponseDto;
+import com.example.notesservice.exception.AlreadyExistsException;
+import com.example.notesservice.exception.ErrorCode;
+import com.example.notesservice.exception.NotFoundException;
+import com.example.notesservice.mapper.NoteBaseMapper;
+import com.example.notesservice.model.Note;
+import com.example.notesservice.repository.NoteRepository;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,7 +29,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Transactional
     @Override
-    public @Nonnull NoteCreateResponseDto createNote(@NonNull NoteCreateRequestDto noteCreateRequestDto) {
+    public NoteCreateResponseDto createNote(NoteCreateRequestDto noteCreateRequestDto) {
         final Note note = noteBaseMapper.toNote(noteCreateRequestDto);
         final NoteCreateResponseDto noteCreateResponseDto =
                 noteBaseMapper.toCreateNoteResponseDto(noteRepository.save(note));
@@ -42,7 +39,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Transactional(readOnly = true)
     @Override
-    public @Nullable List<NoteResponseDto> getAllNotes(String tag) {
+    public List<NoteResponseDto> getAllNotes(String tag) {
         log.info("TAG: {}", tag);
         if(tag == null || tag.isBlank()) {
             final List<Note> notes = noteRepository.findAll();
@@ -52,7 +49,7 @@ public class NoteServiceImpl implements NoteService {
         return getByTag(tag);
     }
 
-    private @Nonnull List<NoteResponseDto> getByTag(@Nonnull String tag) {
+    private List<NoteResponseDto> getByTag(String tag) {
         final List<Note> notes = noteRepository.findByTagContainingIgnoreCase(tag);
         log.debug("Notes found: {}", notes.size());
         return notes.stream()
@@ -62,7 +59,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Transactional(readOnly = true)
     @Override
-    public @Nullable NoteResponseDto getNoteById(@NonNull Long id) {
+    public NoteResponseDto getNoteById(Long id) {
         final NoteResponseDto responseDto = noteRepository.findById(id)
                 .map(noteBaseMapper::toNoteResponseDto)
                 .orElseThrow(() -> new AlreadyExistsException(ErrorCode.BAD_REQUEST.formatMessage(id)));
@@ -72,7 +69,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Transactional
     @Override
-    public @Nonnull NoteUpdateResponseDto update(@NonNull Long id, @Nonnull NoteUpdateRequestDto noteUpdateRequestDto) {
+    public NoteUpdateResponseDto update(Long id, NoteUpdateRequestDto noteUpdateRequestDto) {
         final Note note = noteRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(ErrorCode.NOT_FOUND.formatMessage("id", id)));
         if (note.getTitle() != null) {
@@ -87,7 +84,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Transactional
     @Override
-    public void delete(@NonNull Long id) {
+    public void delete(Long id) {
         final Note note = noteRepository.findById(id)
                 .orElseThrow(() -> {
                     log.error("Note with id: {} not found", id);
